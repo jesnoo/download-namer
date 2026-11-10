@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Download Namer",
+  "version": "1.0.0",
+  "description": "Gives every download a findable name (Source - What - Date) using on-device Gemini Nano. Nothing leaves your laptop.",
+  "minimum_chrome_version": "138",
+  "permissions": ["downloads", "storage", "tabs", "offscreen"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Smart Download Namer",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Smart Download Namer</title>
+  <style>
+    :root { --bg:#fff; --fg:#1f1f1f; --muted:#666; --line:#e5e5e5; --accent:#1a73e8; --ok:#188038; --warn:#b06000; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#202124; --fg:#e8eaed; --muted:#9aa0a6; --line:#3c4043; --accent:#8ab4f8; --ok:#81c995; --warn:#fdd663; } }
+    body { width: 380px; margin: 0; font: 13px/1.4 system-ui, sans-serif; background: var(--bg); color: var(--fg); }
+    header { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--line); }
+    h1 { font-size:14px; margin:0; }
+    .status { padding:8px 14px; color:var(--muted); font-size:12px; border-bottom:1px solid var(--line); }
+    ul { list-style:none; margin:0; padding:0; max-height:360px; overflow:auto; }
+    li { padding:8px 14px; border-bottom:1px solid var(--line); }
+    .orig { color:var(--muted); font-size:11px; word-break:break-all; }
+    .new { font-weight:600; word-break:break-all; }
+    .via { font-size:10px; padding:1px 6px; border-radius:8px; border:1px solid currentColor; margin-left:4px; }
+    .via.ai { color:var(--ok); } .via.fallback, .via.low-confidence { color:var(--warn); }
+    .empty { padding:16px 14px; color:var(--muted); }
+    footer { padding:10px 14px; }
+    button { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:7px 10px; cursor:pointer; font:inherit; }
+    @media (prefers-color-scheme: dark) { button { color:#202124; } }
+    .switch { display:flex; gap:6px; align-items:center; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Smart Download Namer</h1>
+    <label class="switch"><input type="checkbox" id="enabled"> <span id="enabledLabel">On</span></label>
+  </header>
+  <div class="status" id="status">Checking Gemini Nano…</div>
+  <ul id="list"></ul>
+  <footer><button id="openEval">Open accuracy test</button></footer>
+  <script src="popup.js"></script>
+</body>
+</html>
